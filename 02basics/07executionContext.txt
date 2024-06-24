@@ -1,0 +1,60 @@
+global execution context
+functional execution context
+eval execution context
+
+memory creation phase (creation phase)= allocation
+execution phase
+
+//code
+
+let val1=10;
+let val2=20;
+
+function addNum(num1, num2){
+  let total=num1+num2;
+  return total;
+}
+
+let result1=addNum(val1, val2);
+let result2=addNum(10, 5);
+
+//steps of execution
+1. global execution (allocation in this)
+2. memory creation(
+  val1=undefined
+  val2=undefined
+  addNum=defination
+  result1=undefined
+  result2=undefined
+)
+3.execution phase(
+  val1=10
+  val2=20
+  addNum=> another execution context(
+    new variable environment
+    execution thread
+  )=>(
+    memory phase(
+      val1=undefined
+      val2=undefined
+      total=undefined
+    )
+    execution phase(
+      num1=10
+      num2=20
+      total=30 =>returned to global execution phase
+    )
+
+    //deleted after use
+  )
+  continued
+  result1=30
+  result2=repetition of addNum
+)
+
+//callStack
+pushed into a stack according to its steps and popped after execution
+
+browser snippet to visualize
+
+

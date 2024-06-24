@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM learning</title>
+</head>
+<body>
+  <div class="container">
+    <h1>DOM</h1>
+    <h2>DOM</h2>
+    <h3>DOM</h3>
+    <h4>DOM</h4>
+    <ul class="list">
+      <li class="list-item">one</li>
+      <li class="list-item">two</li>
+      <li class="list-item">three</li>
+    </ul>
+  </div>
+
+  <script>
+    // const lists=document.querySelectorAll('li');
+    // lists[0].style.color='green';
+    // lists[1].style.color='blue';
+    // lists[2].style.color='red';
+
+    // lists.forEach(function(li){
+    //   li.style.background='gray';
+    // });
+
+    const heading=document.querySelectorAll('h1');
+    // heading.style.color='red'; //won't work because its a nodeList, instead
+    heading[0].style.color='red'; //now it works
+    // console.log(lists);
+    let listItem=document.getElementsByClassName('list-item'); //cant loop html collections using foreach loop
+    let myConvertedArray=Array.from(listItem); //converting htmlCollections to array
+    myConvertedArray.forEach(function(li){
+      li.style.color='orange';
+    });
+  </script>
+</body>
+</html>

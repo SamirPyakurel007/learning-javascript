@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>editing the dom</title>
+  <style>
+    body{
+      background: black;
+      color:white;
+    }
+  </style>
+</head>
+<body>
+  <ul class="language">
+
+  </ul>
+  <script>
+    function addLanguage(langName){
+      const li=document.createElement('li');
+      li.innerHTML=`${langName}`;
+      const language=document.querySelector('.language');
+      language.appendChild(li);
+    }
+    addLanguage('python');
+    addLanguage('javascript');
+    addLanguage('typescript');
+    addLanguage('ruby on rails');
+
+    //more optimized way since above function will traverse 
+    //the whole DOM everytime function is called.
+
+    function addOptiLang(langName){
+      const li=document.createElement('li');
+      li.appendChild(document.createTextNode(langName));
+      const language=document.querySelector('.language');
+      language.appendChild(li);
+    }
+
+    addOptiLang('golang');
+    addOptiLang('c++');
+    addOptiLang('c#');
+    addOptiLang('java');
+
+    //editing the created element
+
+    const lang1=document.querySelector('li:nth-child(7)');
+    //lang2.innerHTML='mojo';
+    const newLi=document.createElement('li');
+    newLi.textContent='mojo';
+    lang1.replaceWith(newLi);
+
+    const lang2=document.querySelector('li:first-child');
+    lang2.outerHTML='<li>typescript</li>';
+
+    const lang3=document.querySelector('li:last-child');
+    lang3.remove();
+
+  </script>
+</body>
+</html>

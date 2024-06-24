@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM learning</title>
+  <style>
+    body{
+      background: black;
+      color:lightgray;
+    }
+    .tab{
+      background: gray;
+    }
+    span{
+      display:none;
+    }
+  </style>
+</head>
+<body>
+  <div class="tab">
+    <h1 id="main" class="heading">Learning DOM <span>hidden</span></h1>
+    <p class="para">Lorem ipsum dolor sit amet.</p>
+  </div>
+
+  <script>
+    // document.getElementsByTagName('h1')[0].innerHTML='DOM';         //seems array but nodeList
+    // document.getElementsByClassName('heading')[0].innerHTML='DOM1'; //array(html collections) not exactly an array
+    // document.querySelector('.heading').innerHTML='DOM2';            //singlevalue
+    // document.getElementById('main').innerHTML='dom3';               //singlevalue
+    // document.querySelector('#main').innerHTML='dom4';               //singlevalue
+    // document.querySelectorAll('.para')[0].innerHTML='querySelectorAll select every element having className para' //nodeList
+
+    const heading=document.getElementById('main');
+    const attribute=heading.getAttribute('class');
+    heading.style.borderRadius='15px';
+    heading.style.padding='15px';
+    heading.style.background='black';
+
+    // console.log(attribute);
+
+    console.log(heading.innerText);  //shows visible text inside an element
+    console.log(heading.textContent);//shows all text inside an element
+    console.log(heading.innerHTML);  //shows everything inside an element
+  </script>
+</body>
+</html>
