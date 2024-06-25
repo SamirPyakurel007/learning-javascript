@@ -28,7 +28,7 @@ function validateGuess(guess){
     alert('please enter a valid Number');
   }else{
     prevGuesses.push(guess);
-    if(numGuesses===11){
+    if(numGuesses===10){
       displayGuess(guess);
       displayMessage(`Game Over. Random Number was ${randNumber}`);
       endGame();
@@ -52,7 +52,7 @@ function checkGuess(guess){
 
 function displayGuess(guess){
   UserInput.value='';
-  guesses.innerHTML+=`${guess}, `
+  guesses.innerHTML+=`${guess}, `;
   numGuesses++;
   remaining.innerHTML=`${10-numGuesses}`;
 }
@@ -80,7 +80,7 @@ function newGame(){
     guesses.innerHTML='';
     remaining.innerHTML=`${10-numGuesses}`;
     UserInput.removeAttribute('disabled');
-    result.removeChild('p');
+    result.removeChild(p);
     playGame=true;
   });
 }
