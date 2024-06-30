@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async code</title>
+</head>
+<body>
+  <h1>learning about async</h1>
+  <button id="start">start</button>
+  <button id="stop">stop</button>
+
+  <script>
+    const sayDate=function(){
+      console.log('samir', Date.now());
+    }
+
+    const start=document.querySelector('#start');
+    const stopIt=document.querySelector('#stop');
+    const h1=document.querySelector('h1');
+
+    start.addEventListener('click', function(){
+      h1.innerHTML='started';
+      const started=setInterval(sayDate, 1000);
+      stopIt.addEventListener('click', function(){
+        h1.innerHTML='stopped';
+        clearInterval(started);
+      });
+    });
+
+  </script>
+</body>
+</html>

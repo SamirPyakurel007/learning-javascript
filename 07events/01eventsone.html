@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events in javascript</title>
+  <style>
+    body{
+      background: #000;
+      color:white;
+    }
+    ul p{
+      cursor:default;
+    }
+  </style>
+</head>
+<body>
+  <h1>Images</h1>
+  <ul id="numbers">
+    <li><p id="one">one</p></li>
+    <li><p id="two">two</p></li>
+    <li><p id="three">three</p></li>
+    <li><p id="four">four</p></li>
+    <li><p id="five">five</p></li>
+    <li><a id="google" href="https://google.com">click here</a></li>
+  </ul>
+
+  <script>
+    // document.getElementById('one').onclick=function(){
+    //   alert('one clicked');
+    // }                        //bad approach
+
+    //other approaches
+    //attachEvent()
+    //jquery - on         // early days in js
+
+    //type
+    //timestamp
+    //defaultPrevented
+    //target, toElement, srcElement, currentTarget
+    //clientX, clientY, screenX, screenY
+    //altKey, ctrlKey, shiftKey, keyCode
+
+    document.getElementById('numbers').addEventListener('click', function(e){
+      // alert('clicked inner of ul');
+    },false);
+
+    // document.getElementById('one').addEventListener('click', function(e){
+    //   // alert('one clicked again');
+    //   // e.stopPropagation(); //stop bubbling
+    //   // console.log(e);
+    // },false); //false is a default value
+
+    //first 'one clicked again' then 'clicked inner of ul' its called bubbling when false(bottom to top)
+    //when true its called capturing mode (top to bottom)
+
+    document.getElementById('google').addEventListener('click', function(e){
+      e.preventDefault();
+      // e.stopPropagation();
+      console.log('google clicked');
+    }, false);
+
+    document.getElementById('numbers').addEventListener('click', function(e){
+      console.log(e.target.parentNode);
+      let removeIt=e.target.parentNode;
+      removeIt.remove();
+      // removeIt.parentNode.removeChild(removeIt);
+    },false);
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>async code</title>
+</head>
+<body>
+  <h1>learning about async</h1>
+  <button id="stop">stop</button>
+
+  <script>
+    // setTimeout(function(){
+    //   console.log('wait for some time');
+    // }, 2000);
+
+    // setInterval(function(){
+    //   console.log('i will continuosly display this');
+    // }, 2000);
+
+    const changeText=function(){
+      document.querySelector('h1').innerHTML='How it works';
+    };
+
+    const changeMe=setTimeout(changeText, 2000);
+    // clearTimeout(changeMe);                    // use it on event so it becomes useful
+
+    let stop=document.querySelector('#stop');
+    stop.addEventListener('click',function(){
+      clearTimeout(changeMe);
+      console.log('stopped');
+    });
+
+  </script>
+</body>
+</html>
