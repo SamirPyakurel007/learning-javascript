@@ -1,0 +1,107 @@
+<!-- {
+  "results": [
+    {
+      "gender": "male",
+      "name": {
+        "title": "Mr",
+        "first": "Joona",
+        "last": "Latvala"
+      },
+      "location": {
+        "street": {
+          "number": 872,
+          "name": "Aleksanterinkatu"
+        },
+        "city": "Marttila",
+        "state": "Central Ostrobothnia",
+        "country": "Finland",
+        "postcode": 15814,
+        "coordinates": {
+          "latitude": "-24.6749",
+          "longitude": "-106.4203"
+        },
+        "timezone": {
+          "offset": "-3:00",
+          "description": "Brazil, Buenos Aires, Georgetown"
+        }
+      },
+      "email": "joona.latvala@example.com",
+      "login": {
+        "uuid": "57510801-99bf-47d3-b3a5-8687f23eb06c",
+        "username": "purplefrog592",
+        "password": "cabron",
+        "salt": "JJR8DYnB",
+        "md5": "55f7200ab2b00e550f15c465bdddbcc8",
+        "sha1": "0fa96475926e43df510b0f6758df9f8013ca19a3",
+        "sha256": "7ccdf5bfc0f385e345f2333cf9c49c1b1bf2abe8adfc2479c13d99ac3692dae6"
+      },
+      "dob": {
+        "date": "1968-02-05T12:54:12.349Z",
+        "age": 56
+      },
+      "registered": {
+        "date": "2013-04-01T01:24:08.708Z",
+        "age": 11
+      },
+      "phone": "09-129-703",
+      "cell": "048-332-72-20",
+      "id": {
+        "name": "HETU",
+        "value": "NaNNA851undefined"
+      },
+      "picture": {
+        "large": "https://randomuser.me/api/portraits/men/46.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/men/46.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/46.jpg"
+      },
+      "nat": "FI"
+    }
+  ],
+  "info": {
+    "seed": "5e7122eb54b786fa",
+    "results": 1,
+    "page": 1,
+    "version": "1.4"
+  }
+} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API request</title>
+</head>
+<body>
+  <!-- 0	UNSENT	Client has been created. open() not called yet.
+      1	OPENED	open() has been called.
+      2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+      3	LOADING	Downloading; responseText holds partial data.
+      4	DONE	The operation is complete. -->
+<script>
+
+    // XML HTTP REQUEST
+
+    const requestUrl='https://randomuser.me/api/';
+    const xhr=new XMLHttpRequest();
+    xhr.open('GET', requestUrl);
+    xhr.onreadystatechange=function(){
+      console.log(xhr.readyState);
+      if(xhr.readyState===4){
+        // console.log(this.responseText);
+        // const data=this.responseText;
+        // console.log(typeof(data));     // it is a string, i thought i would be object
+        // console.log(data.city);        //so not 
+        
+        // lets convert to object
+        console.log(this.responseText);
+        const data = JSON.parse(this.responseText); //converted string to json which is basically an object
+        console.log(typeof(data));
+        const user=data.results[0];
+        console.log(user.name.last);
+      }
+    }
+    xhr.send();
+  </script>
+</body>
+</html>
