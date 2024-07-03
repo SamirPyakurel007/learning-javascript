@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>closure</title>
+</head>
+<body>
+  <button id="red">red</button> 
+  <button id="orange">orange</button> 
+  <script>
+    // document.getElementById('orange').onclick=function(){
+    //   document.body.style.background='orange';
+    // }
+    // document.getElementById('red').onclick=function(){
+    //   document.body.style.background='red';
+    // }
+
+    function clickHandeler(color){
+      // document.body.style.background=`${color}`;
+      return function(){
+        document.body.style.background=`${color}`;
+      }
+    }
+
+    document.getElementById('orange').onclick=clickHandeler('orange'); // executed without click so line 21 to 23 basically lexical scope
+  </script>
+</body>
+</html>
